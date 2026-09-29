@@ -85,6 +85,7 @@ def list(request):
      #response.set_cookie('visits', visits)
      return response
 
+@login_required(login_url='login/')
 def edit(request,pk):
     
     instance_to_be_edited= MovieInfo.objects.get(pk=pk)
@@ -100,6 +101,7 @@ def edit(request,pk):
     #return render(request, 'edit.html')
     return render(request, 'create.html', {'frm': frm})
 
+@login_required(login_url='login/')
 def delete(request,pk):
          instance= MovieInfo.objects.get(pk=pk)
          instance.delete()
